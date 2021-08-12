@@ -13,7 +13,19 @@ const Counter = () => {
   return (
     <>
       <StyledText>count : {count} </StyledText>
-      <Button title="+" onPress={() => setCount(count => count + 1)}></Button>
+      <Button
+        title="+"
+        onPress={() => {
+          // setCount(count + 1);
+          // setCount(count + 1);
+          setCount(count => {
+            return count + 1;
+          });
+          setCount(count => {
+            return count + 1;
+          });
+        }}
+      ></Button>
       <Button title="-" onPress={() => setCount(count => count - 1)}></Button>
     </>
   );
