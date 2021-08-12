@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import Counter from './components/Counter';
 
 const Container = styled.View`
   flex: 1;
@@ -9,5 +10,9 @@ const Container = styled.View`
 `;
 
 export default function App() {
-  return <Container></Container>;
+  return (
+    <Container>
+      <Counter />
+    </Container>
+  );
 }
