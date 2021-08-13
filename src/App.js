@@ -6,7 +6,7 @@ import Button from './components/Button';
 import CoinInfo from './components/CoinInfo';
 import { useFetch } from './hooks/useFetch';
 
-const Container = styled.View`
+const Container = styled.SafeAreaView`
   flex: 1;
   background-color: #fff;
   align-items: center;
@@ -18,6 +18,11 @@ const LoadingText = styled.Text`
   color: #ff6600;
 `;
 
+const List = styled.ScrollView`
+  flex: 1;
+  width: 100%;
+`;
+
 export default function App() {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -27,9 +32,16 @@ export default function App() {
   return (
     <Container>
       {inProgress && <LoadingText>Loading... </LoadingText>}
-      {data?.data.map(({ symbol, name, price_usd }) => (
-        <CoinInfo key={symbol} symbol={symbol} name={name} price={price_usd} />
-      ))}
+      <List>
+        {data?.data.map(({ symbol, name, price_usd }) => (
+          <CoinInfo
+            key={symbol}
+            symbol={symbol}
+            name={name}
+            price={price_usd}
+          />
+        ))}
+      </List>
     </Container>
   );
 }
